@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "nodemon index"
+    "watch": "tsc -w",
+    "server-ts": "nodemon --exec ts-node src/app.ts"
   },
   "author": "",
   "license": "ISC",
@@ -21,6 +22,7 @@
     "express": "^4.17.1",
     "express-paginate": "^1.0.2",
     "express-validation": "^3.0.8",
+    "google-auth-library": "^7.14.1",
     "http-status": "^1.5.0",
     "joi": "^17.4.2",
     "jsonwebtoken": "^8.5.1",
