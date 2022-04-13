@@ -43,7 +43,7 @@ var mongoose_1 = __importDefault(require("mongoose"));
 var index_1 = __importDefault(require("./index"));
 var logger_1 = __importDefault(require("../utils/logger"));
 var connectToDb = function () { return __awaiter(void 0, void 0, void 0, function () {
-    var e_1;
+    var error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -57,8 +57,9 @@ var connectToDb = function () { return __awaiter(void 0, void 0, void 0, functio
                 logger_1.default.info('Connect to database successfully');
                 return [3 /*break*/, 3];
             case 2:
-                e_1 = _a.sent();
-                logger_1.default.error('Can not connect to database', e_1);
+                error_1 = _a.sent();
+                logger_1.default.error('Cannot connect to database', error_1);
+                console.log(error_1);
                 process.exit(1);
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];

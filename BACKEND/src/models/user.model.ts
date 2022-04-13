@@ -1,12 +1,28 @@
 import { Document, Schema, model } from 'mongoose';
+export type IUserDisplay = Omit<
+  IUser,
+  'password' | 'confirmPassword' | 'printUser'
+>;
 export interface IUser extends Document {
   _id: string;
   email: string;
-  password: string;
   fullName: string;
   role: string;
+  address: string;
+  gender: number;
   phoneNumber: string;
+  password: string;
+  confirmPassword: string;
+  createdAt: Date;
+  updateAt: Date;
+  avatar: string;
+  comparePassword: (otherPassword: string) => Promise<boolean>;
+  printUser: () => IUserDisplay;
 }
+export const GENDER = {
+  MALE: 1,
+  FEMALE: 0,
+};
 const UserSchema = new Schema(
   {
     email: {
@@ -24,6 +40,10 @@ const UserSchema = new Schema(
     },
     phoneNumber: {
       type: String,
+    },
+    gender: {
+      type: String,
+      enum: [GENDER.MALE, GENDER.FEMALE],
     },
   },
   { timestamps: true },
